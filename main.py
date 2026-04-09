@@ -6,7 +6,8 @@ import uvicorn
 
 app = FastAPI()
 
-model_path = "." 
+# Added 'r' to fix the path error and using your specific path
+model_path = r"ززززززززز" 
 
 print("⏳ Loading model... Please wait.")
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
