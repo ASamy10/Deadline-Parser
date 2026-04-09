@@ -52,7 +52,7 @@ while IFS= read -r url; do
         echo "✓ File already exists: $FILENAME. Skipping download."
     else
         echo "Downloading: $url -> $FILENAME"
-        if gdown --fuzzy "$url" -O "$CURRENT_DIR/$FILENAME"; then
+        if gdown --fuzzy "$url" -O "$CURRENT_DIR/"; then
             echo "✓ Successfully downloaded"
         else
             echo "✗ Failed to download: $url"

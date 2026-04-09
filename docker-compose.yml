@@ -1,6 +1,6 @@
 services:
   deadline-parser-api:
-    image: omarhussein2111/deadline-parser-api:latest
+    build: .
     ports:
       - "8000:8000"
     volumes:
