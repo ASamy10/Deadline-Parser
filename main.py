@@ -6,7 +6,7 @@ import uvicorn
 
 app = FastAPI()
 
-model_path = "/home/runner/work/Deadline-Parser/Deadline-Parser/model.safetensors" 
+model_path = "./model.safetensors" 
 
 print("⏳ Loading model... Please wait.")
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
