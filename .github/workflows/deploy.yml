@@ -19,22 +19,12 @@ jobs:
           docker tag deadline-parser-api:latest ${{ secrets.DOCKER_USERNAME }}/deadline-parser-api:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/deadline-parser-api:latest
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install "torch>=2.6.0" --index-url https://download.pytorch.org/whl/cpu
-          
       - name: Download model files
         run: |
           chmod +x downloadModel.sh
           ./downloadModel.sh
           
-      - name: Run API server
+      - name: Run compose up
         run: |
-          uvicorn main:app --host 0.0.0.0 --port 8000
+          docker compose up -d --wait
+          docker compose logs -f deadline-parser-api
