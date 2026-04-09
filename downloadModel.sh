@@ -12,9 +12,19 @@ if [ ! -f "$URL_FILE" ]; then
     exit 1
 fi
 
-# Check if gdown is installed
-if ! command -v gdown &> /dev/null; then
-    echo "gdown not found. Installing..."
+
+# Set up Python virtual environment for gdown
+VENV_DIR=".gdown-venv"
+if [ ! -d "$VENV_DIR" ]; then
+    echo "Creating Python virtual environment for gdown..."
+    python3 -m venv "$VENV_DIR"
+fi
+
+# Activate venv and install gdown if needed
+source "$VENV_DIR/bin/activate"
+if ! python -m gdown --help &> /dev/null; then
+    echo "Installing gdown in venv..."
+    pip install --upgrade pip
     pip install gdown
 fi
 
