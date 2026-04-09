@@ -1,4 +1,0 @@
-fastapi
-uvicorn
-transformers
-setuptools>=78.1.1
